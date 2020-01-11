@@ -1,22 +1,33 @@
 import { FC, ReactNode } from "react";
 import styled from "styled-components";
+import { navbarBlue } from "../../components/colors";
 import NavBar from "../../components/NavBar";
-import { faq } from "./data";
 import { wasmPurple, wasmDarkPurple } from "../../components/colors";
+import { faq } from "../../data/about";
 
 const title = "About";
 
 const AboutPage: FC = () => (
   <>
-    <BackgroundLayer></BackgroundLayer>
-    <NavBar title={title} currentPage="About" backgroundColor="#1b1d6e" />
-    <Faq />
+    <Background />
+    <NavBar title={title} backgroundColor={navbarBlue} bottom />
+    <Faq id="faq">
+      <Headline>{title}</Headline>
+      <Questions>
+        {faq.map(({ question, answer }) => (
+          <QuestionAnswerPair key={question}>
+            <Question>{question}</Question>
+            <Answer>{answer}</Answer>
+          </QuestionAnswerPair>
+        ))}
+      </Questions>
+    </Faq>
   </>
 );
 
 export default AboutPage;
 
-export const BackgroundLayer = styled.div`
+export const Background = styled.div`
   background-color: white; /* hsla(237, 60%, 48%, 0.6); */
   position: fixed;
   top: 0;
@@ -26,27 +37,36 @@ export const BackgroundLayer = styled.div`
   z-index: -1;
 `;
 
-const Faq: FC = () => (
-  <FaqBox id="faq">
-    <ColumnLayout>
-      {faq.map(({ question, answer }) => (
-        <FaqItem key={question} question={question}>
-          {answer}
-        </FaqItem>
-      ))}
-    </ColumnLayout>
-  </FaqBox>
-);
+export const Headline = styled.h1`
+  font-size: 3em;
+  margin-top: 3vh;
+  margin-bottom: 0vh;
+  padding: 15px;
+`;
 
-const FaqBox = styled.div`
+const Faq = styled.div`
   padding: 7vh 4%;
+  color: white;
+  a {
+    color: white;
+    text-decoration: underline;
+    &:visited {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+`;
+
+const Questions = styled.div`
   background-color: ${(props: { primary?: boolean }) =>
     props.primary ? "#fff" : "transparent"};
   box-shadow: ${(props: { primary?: boolean }) =>
     props.primary ? "0px 5px 30px rgba(0,0,0,0.01)" : "0px"};
   color: black;
   border-radius: 5px;
-
+  columns: auto;
+  column-width: 350px;
+  column-gap: 70px;
   a {
     color: ${wasmDarkPurple};
     text-decoration: underline;
@@ -57,27 +77,15 @@ const FaqBox = styled.div`
   }
 `;
 
-const ColumnLayout = styled.div`
-  columns: auto;
-  column-width: 350px;
-  column-gap: 70px;
+const QuestionAnswerPair = styled.div`
+  break-inside: avoid;
 `;
 
-const FaqItem: FC<{ question: string; children: ReactNode }> = ({
-  question: heading,
-  children
-}) => (
-  <div style={{ breakInside: "avoid" }}>
-    <Question bold>{heading}</Question>
-    <Answer>{children}</Answer>
-  </div>
-);
-
-const Question = styled.div`
+const Question = styled.h2`
   font-size: 1.5em;
   margin: 0 25px 0 0;
   padding: 25px 15px;
-  font-weight: ${(props: { bold?: boolean }) => (props.bold ? 700 : "normal")};
+  font-weight: 700;
   border-bottom: 8px solid rgb(220, 220, 220);
   /*   text-shadow: 2px 4px 5px hsla(237, 80%, 35%, 0.3); */
 `;
