@@ -14,9 +14,9 @@ const AboutPage: FC = () => (
     <Faq id="faq">
       <Headline>{title}</Headline>
       <Questions>
-        {faq.map(({ question, answer }) => (
+        {faq.map(({ question, answer }, index) => (
           <QuestionAnswerPair key={question}>
-            <Question>{question}</Question>
+            <Question>{`${index + 1}. ${question}`}</Question>
             <Answer>{answer}</Answer>
           </QuestionAnswerPair>
         ))}
@@ -42,10 +42,11 @@ export const Headline = styled.h1`
   margin-top: 3vh;
   margin-bottom: 0vh;
   padding: 15px;
+  color: black;
 `;
 
 const Faq = styled.div`
-  padding: 7vh 4%;
+  padding: 7vh 5vw;
   color: white;
   a {
     color: white;
@@ -64,9 +65,17 @@ const Questions = styled.div`
     props.primary ? "0px 5px 30px rgba(0,0,0,0.01)" : "0px"};
   color: black;
   border-radius: 5px;
-  columns: auto;
-  column-width: 350px;
-  column-gap: 70px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 1vw;
+  grid-row-gap: 0px;
+  grid-column-gap: 5vw;
+
+  /*   columns: auto;
+  column-width: 300px;
+  column-gap: 50px;
+  column-rule: 1px solid rgba(0, 0, 0, 0.1);
+ */
   a {
     color: ${wasmDarkPurple};
     text-decoration: underline;
@@ -91,13 +100,13 @@ const Question = styled.h2`
 `;
 
 const Answer = styled.div`
-  font-size: 1.1em;
+  font-size: 1.2em;
   margin: 30px 25px 0 0;
-  padding: 0 15px 50px 25px;
+  padding: 0 15px 20px 25px;
   line-height: 1.7;
   color: rgba(0, 0, 0, 0.7);
   /* text-shadow: 1px 4px 10px rgba(0, 0, 0, 0.25); */
-  font-weight: ${(props: { bold?: boolean }) => (props.bold ? 700 : "normal")};
+  font-weight: normal;
 
   @media screen and (max-width: 749px) {
     fonts-size: 1em;
