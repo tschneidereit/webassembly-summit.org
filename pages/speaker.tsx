@@ -18,30 +18,31 @@ const SpeakerPage: FC = () => (
           const speaker = speakers[id] || {};
           const talk = talks[speaker.talkId] || {};
           return (
-            <Row key={id}>
-              <Time>10:15 AM</Time>
-              <a style={{ textDecoration: "none" }} id={id}>
+            <a style={{ textDecoration: "none" }} id={id}>
+              <Row key={id}>
+                <Time>10:15 AM</Time>
+
                 <Circle></Circle>
-              </a>
-              <QuestionAnswerPair key={id}>
-                <Link
-                  key={id}
-                  href={`/speakers#${id}`}
-                  as={`/speakers#${id}`}
-                  passHref
-                >
-                  <a>
-                    <Image
-                      src={speaker.picture}
-                      alt={`picture of ${speaker.name}`}
-                    ></Image>
-                  </a>
-                </Link>
-                <SpeakerName>{speaker.name}</SpeakerName>
-                <TalkTitle>{talk.title}</TalkTitle>
-                <Answer>{talk.abstract}</Answer>
-              </QuestionAnswerPair>
-            </Row>
+                <QuestionAnswerPair key={id}>
+                  <Link
+                    key={id}
+                    href={`/speakers#${id}`}
+                    as={`/speakers#${id}`}
+                    passHref
+                  >
+                    <a>
+                      <Image
+                        src={speaker.picture}
+                        alt={`picture of ${speaker.name}`}
+                      ></Image>
+                    </a>
+                  </Link>
+                  <SpeakerName>{speaker.name}</SpeakerName>
+                  <TalkTitle>{talk.title}</TalkTitle>
+                  <Answer>{talk.abstract}</Answer>
+                </QuestionAnswerPair>
+              </Row>
+            </a>
           );
         })}
       </Questions>
@@ -54,6 +55,7 @@ export default SpeakerPage;
 const Row = styled.div`
   display: flex;
   flex-direction: row;
+  padding-top: 25px;
 `;
 
 const Image = styled.img`
@@ -156,7 +158,6 @@ const QuestionAnswerPair = styled.div`
   flex: 1;
   border-left: 2px dashed rgba(255, 255, 255, 0.15);
   padding-left: calc(3vw + 10px);
-  margin-bottom: 25px;
 `;
 
 const TalkTitle = styled.h2`
