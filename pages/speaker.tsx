@@ -19,21 +19,15 @@ const SpeakerPage: FC = () => (
           return (
             <Row>
               <div>
-                <Time>10.15 AM</Time>
+                <Time>10:15 AM</Time>
               </div>
 
               <Circle></Circle>
               <QuestionAnswerPair key={id}>
-                <img
-                  style={{
-                    maxWidth: 175,
-                    borderRadius: "50%",
-                    border: "10px solid rgb(150,150,200,1)",
-                    margin: 15
-                  }}
+                <Image
                   src={speaker.picture}
                   alt={`picture of ${speaker.name}`}
-                ></img>
+                ></Image>
                 <SpeakerName>{speaker.name}</SpeakerName>
                 <TalkTitle>{talk.title}</TalkTitle>
                 <Answer>{talk.abstract}</Answer>
@@ -53,11 +47,21 @@ const Row = styled.div`
   flex-direction: row;
 `;
 
+const Image = styled.img`
+  max-width: 175px;
+  border-radius: 50%;
+  border: 10px solid rgb(150, 150, 200, 1);
+  margin: 15px;
+
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
+`;
+
 const Time = styled.div`
-  font-size: 0.85em;
+  font-size: 1em;
   color: rgba(255, 255, 255, 0.75);
-  margin: -1px calc(1vw + 10px) 0 0;
-  /*  white-space: nowrap; */
+  margin: -1px calc(2vw + 5px) 0 0;
 
   @media screen and (max-width: 500px) {
     font-size: 0.75em;
