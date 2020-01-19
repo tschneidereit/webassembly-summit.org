@@ -14,8 +14,7 @@ export const talks: { [id: string]: Talk } = {
   "1": {
     speakerId: "1",
     title: "Opening Keynote",
-    abstract:
-      "Lin Clark is well known for her code cartoons, breaking down abstract technology into easily digestable cartoons. She is working at Mozilla on Rust and WebAssembly."
+    abstract: "The conference will open with a keynote by Lin Clark."
   },
   "2": {
     speakerId: "2",
@@ -89,7 +88,8 @@ export const talks: { [id: string]: Talk } = {
   },
   "9": {
     speakerId: "9",
-    title: "Closing Keynote"
+    title: "Closing Keynote",
+    abstract: "The conference will close with a keynote by Ben Smith."
   }
 };
 
