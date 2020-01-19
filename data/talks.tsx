@@ -13,9 +13,9 @@ export type Talk = {
 export const talks: { [id: string]: Talk } = {
   "1": {
     speakerId: "1",
-    title: "Keynote",
+    title: "Opening Keynote",
     abstract:
-      "Lin Clark well known for breaking down the ideas behind abstract concepts into easily understandable code cartoons and will give the opening keynote."
+      "Lin Clark is well known for her code cartoons, breaking down abstract technology into easily digestable cartoons. She is working at Mozilla on Rust and WebAssembly."
   },
   "2": {
     speakerId: "2",
@@ -89,7 +89,7 @@ export const talks: { [id: string]: Talk } = {
   },
   "9": {
     speakerId: "9",
-    title: "Keynote"
+    title: "Closing Keynote"
   }
 };
 

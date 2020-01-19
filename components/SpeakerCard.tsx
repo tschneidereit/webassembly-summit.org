@@ -86,15 +86,15 @@ const SpeakerCard = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 1.6em;
+  font-size: 1.4em;
   line-height: 1.4;
-  font-weight: bold;
+  font-weight: normal;
   margin: 0px 0;
   padding: 0;
   color: rgba(255, 255, 255, 0.85);
 
   @media screen and (max-width: 1024px) {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
 `;
 

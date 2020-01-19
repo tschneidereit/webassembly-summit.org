@@ -13,7 +13,7 @@ const SpeakerPage: FC = () => (
     <Faq id="faq">
       <Headline>{title}</Headline>
       <Questions>
-        {Object.keys(speakers).map(id => {
+        {Object.keys(speakers).map((id, index) => {
           const speaker = speakers[id] || {};
           const talk = talks[speaker.talkId] || {};
           return (
@@ -21,14 +21,23 @@ const SpeakerPage: FC = () => (
               <div>
                 <Time>10.15 AM</Time>
               </div>
-              <div>
-                <Circle></Circle>
-                <QuestionAnswerPair key={id}>
-                  <SpeakerName>{speaker.name}</SpeakerName>
-                  <TalkTitle>{talk.title}</TalkTitle>
-                  <Answer>{talk.abstract}</Answer>
-                </QuestionAnswerPair>
-              </div>
+
+              <Circle></Circle>
+              <QuestionAnswerPair key={id}>
+                <img
+                  style={{
+                    maxWidth: 175,
+                    borderRadius: "50%",
+                    border: "10px solid rgb(150,150,200,1)",
+                    margin: 15
+                  }}
+                  src={speaker.picture}
+                  alt={`picture of ${speaker.name}`}
+                ></img>
+                <SpeakerName>{speaker.name}</SpeakerName>
+                <TalkTitle>{talk.title}</TalkTitle>
+                <Answer>{talk.abstract}</Answer>
+              </QuestionAnswerPair>
             </Row>
           );
         })}
@@ -46,9 +55,9 @@ const Row = styled.div`
 
 const Time = styled.div`
   font-size: 0.85em;
-  color: rgba(200, 200, 255, 1);
+  color: rgba(255, 255, 255, 0.75);
   margin: -1px calc(1vw + 10px) 0 0;
-  white-space: nowrap;
+  /*  white-space: nowrap; */
 
   @media screen and (max-width: 500px) {
     font-size: 0.75em;
@@ -63,7 +72,8 @@ const Circle = styled.div`
   border: 3px solid white;
   z-index: 2;
   /* margin-top: 20px; */
-  margin-left: -7px;
+  margin-right: -8px;
+  background: hsla(237, 40%, 48%, 1);
   width: 10px;
   height: 10px;
 `;
@@ -125,21 +135,22 @@ const Questions = styled.div`
 const QuestionAnswerPair = styled.div`
   break-inside: avoid;
   max-width: 600px;
+  flex: 1;
+
   z-index: -1;
   border-left: 2px dashed rgba(255, 255, 255, 0.15);
   padding-left: calc(3vw + 10px);
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 `;
 
 const TalkTitle = styled.h2`
   font-size: 1.5em;
   padding-bottom: 30px;
-  margin-top: 15px;
+  margin-top: 0;
   padding-left: 5px;
   font-weight: 700;
   border-bottom: 3px solid rgba(255, 255, 255, 0.4);
   text-shadow: 2px 4px 5px hsla(237, 80%, 35%, 0.3);
-
   @media screen and (max-width: 500px) {
     font-size: 1.4em;
   }

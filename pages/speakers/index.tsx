@@ -23,7 +23,7 @@ const SpeakersPage: FC = () => (
     <NavBar title={title} backgroundColor={navbarBlue} bottom />
     {/* <Headline>{title}</Headline> */}
     <Speakers id="speakers">
-      {Object.keys(speakers).map(id => {
+      {Object.keys(speakers).map((id, index) => {
         const speaker = speakers[id] || {};
         const talk = talks[speaker.talkId] || {};
         const time = talk.time || {};
@@ -36,18 +36,13 @@ const SpeakersPage: FC = () => (
                   alt={`picture of ${speaker.name}`}
                 ></img>
                 <SpeakerName>
-                  <strong>{speaker.name}</strong>{" "}
+                  {index + 1}. <strong>{speaker.name}</strong>{" "}
                   {speaker.company && <Company>{speaker.company}</Company>}
                 </SpeakerName>
                 <SpeakerSummary>
-                  {talk && (
+                  {speaker && (
                     <>
-                      <p>
-                        {time.start &&
-                          time.end &&
-                          `${time.start} - ${time.end}`}
-                      </p>
-                      <Title>{talk.title}</Title>
+                      <Title>{speaker.intro}</Title>
                       {/* {talk.subtitle && <Subtitle>{talk.subtitle}</Subtitle>} */}
                       {/* <Icon>
                     <FaGithub size={32}></FaGithub>
@@ -95,7 +90,7 @@ const Background = styled.div`
 `;
 
 const Speakers = styled.div`
-  padding: 25px;
+  padding: 3vw;
   padding-top: 6vh;
   padding-bottom: 100px;
   /* display: flex;
