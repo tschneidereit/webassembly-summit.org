@@ -36,13 +36,13 @@ const SpeakersPage: FC = () => (
                   alt={`picture of ${speaker.name}`}
                 ></img>
                 <SpeakerName>
-                  {index + 1}. <strong>{speaker.name}</strong>{" "}
+                  <strong>{speaker.name}</strong>{" "}
                   {speaker.company && <Company>{speaker.company}</Company>}
                 </SpeakerName>
                 <SpeakerSummary>
                   {speaker && (
                     <>
-                      <Title>{speaker.intro}</Title>
+                      <Title>{talk.title}</Title>
                       {/* {talk.subtitle && <Subtitle>{talk.subtitle}</Subtitle>} */}
                       {/* <Icon>
                     <FaGithub size={32}></FaGithub>

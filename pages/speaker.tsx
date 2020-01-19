@@ -18,8 +18,8 @@ const SpeakerPage: FC = () => (
           const speaker = speakers[id] || {};
           const talk = talks[speaker.talkId] || {};
           return (
-            <a style={{ textDecoration: "none" }} id={id}>
-              <Row key={id}>
+            <a key={id} style={{ textDecoration: "none" }} id={id}>
+              <Row>
                 <Time>10:15 AM</Time>
 
                 <Circle></Circle>
