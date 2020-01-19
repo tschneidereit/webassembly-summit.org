@@ -8,7 +8,8 @@ module.exports = withBundleAnalyzer({
     const paths = {
       "/": { page: "/" },
       "/about": { page: "/about" },
-      "/speakers": { page: "/speakers" }
+      "/speakers": { page: "/speakers" },
+      "/speaker": { page: "/speaker" }
     };
 
     [1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(id => {

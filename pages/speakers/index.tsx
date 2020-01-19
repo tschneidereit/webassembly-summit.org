@@ -28,8 +28,8 @@ const SpeakersPage: FC = () => (
         const talk = talks[speaker.talkId] || {};
         const time = talk.time || {};
         return (
-          <Link key={id} href="/speakers/[id]" as={`/speakers/${id}`}>
-            <a>
+          <Link key={id} href="/speaker" as={`/speaker#${id}`}>
+            <a id={id}>
               <SpeakerCard>
                 <img
                   src={speaker.picture}

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { NavBar, navbarBlue, wasmPurple } from "../components";
 import { speakers } from "../data/speakers";
 import { talks } from "../data/talks";
+import Link from "next/link";
 
 const title = "Talks";
 
@@ -17,17 +18,25 @@ const SpeakerPage: FC = () => (
           const speaker = speakers[id] || {};
           const talk = talks[speaker.talkId] || {};
           return (
-            <Row>
-              <div>
-                <Time>10:15 AM</Time>
-              </div>
-
-              <Circle></Circle>
+            <Row key={id}>
+              <Time>10:15 AM</Time>
+              <a style={{ textDecoration: "none" }} id={id}>
+                <Circle></Circle>
+              </a>
               <QuestionAnswerPair key={id}>
-                <Image
-                  src={speaker.picture}
-                  alt={`picture of ${speaker.name}`}
-                ></Image>
+                <Link
+                  key={id}
+                  href={`/speakers#${id}`}
+                  as={`/speakers#${id}`}
+                  passHref
+                >
+                  <a>
+                    <Image
+                      src={speaker.picture}
+                      alt={`picture of ${speaker.name}`}
+                    ></Image>
+                  </a>
+                </Link>
                 <SpeakerName>{speaker.name}</SpeakerName>
                 <TalkTitle>{talk.title}</TalkTitle>
                 <Answer>{talk.abstract}</Answer>
@@ -52,9 +61,14 @@ const Image = styled.img`
   border-radius: 50%;
   border: 10px solid rgb(150, 150, 200, 1);
   margin: 15px;
+  transition: 150ms;
 
   @media screen and (max-width: 500px) {
-    display: none;
+    max-width: 125px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 
@@ -140,8 +154,6 @@ const QuestionAnswerPair = styled.div`
   break-inside: avoid;
   max-width: 600px;
   flex: 1;
-
-  z-index: -1;
   border-left: 2px dashed rgba(255, 255, 255, 0.15);
   padding-left: calc(3vw + 10px);
   margin-bottom: 25px;
