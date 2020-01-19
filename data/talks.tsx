@@ -92,5 +92,3 @@ export const talks: { [id: string]: Talk } = {
     abstract: "The conference will close with a keynote by Ben Smith."
   }
 };
-
-"";
