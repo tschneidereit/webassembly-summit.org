@@ -5,7 +5,7 @@ import { speakers } from "../data/speakers";
 import { talks } from "../data/talks";
 import Link from "next/link";
 
-const title = "Talks";
+const title = "Schedule";
 
 const SpeakerPage: FC = () => (
   <>
@@ -59,14 +59,14 @@ const Row = styled.div`
 `;
 
 const Image = styled.img`
-  max-width: 175px;
+  max-width: 90px;
   border-radius: 50%;
-  border: 10px solid rgb(150, 150, 200, 1);
-  margin: 15px;
+  border: 6px solid rgb(150, 150, 200, 1);
+  margin: 5px;
   transition: 150ms;
 
   @media screen and (max-width: 500px) {
-    max-width: 125px;
+    max-width: 60px;
   }
 
   &:hover {
@@ -78,6 +78,7 @@ const Time = styled.div`
   font-size: 1em;
   color: rgba(255, 255, 255, 0.75);
   margin: -1px calc(2vw + 5px) 0 0;
+  flex: 0.15;
 
   @media screen and (max-width: 500px) {
     font-size: 0.75em;
@@ -113,6 +114,12 @@ export const Headline = styled.h1`
   margin-top: 3vh;
   margin-bottom: 3vh;
   padding: 10px;
+
+  @media screen and (max-width: 500px) {
+    font-size: 2.5em;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+  }
 `;
 
 const Faq = styled.div`
@@ -168,6 +175,7 @@ const TalkTitle = styled.h2`
   font-weight: 700;
   border-bottom: 3px solid rgba(255, 255, 255, 0.4);
   text-shadow: 2px 4px 5px hsla(237, 80%, 35%, 0.3);
+
   @media screen and (max-width: 500px) {
     font-size: 1.4em;
   }
